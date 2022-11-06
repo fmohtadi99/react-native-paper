@@ -35,7 +35,7 @@ jest.mock('react-native', () => {
 it('renders snackbar with content', () => {
   const tree = renderer
     .create(
-      <Snackbar visible onDismiss={jest.fn()}>
+      <Snackbar visible={false} onDismiss={jest.fn()}>
         Snackbar content
       </Snackbar>
     )
@@ -59,7 +59,7 @@ it('renders not visible snackbar with content wrapper but no actual content', ()
 it('renders snackbar with Text as a child', () => {
   const tree = renderer
     .create(
-      <Snackbar visible onDismiss={jest.fn()}>
+      <Snackbar visible={false} onDismiss={jest.fn()}>
         <Text>Snackbar content</Text>
       </Snackbar>
     )
@@ -72,7 +72,7 @@ it('renders snackbar with action button', () => {
   const tree = renderer
     .create(
       <Snackbar
-        visible
+        visible={false}
         onDismiss={() => {}}
         action={{ label: 'Undo', onPress: jest.fn() }}
       >
@@ -87,7 +87,7 @@ it('renders snackbar with action button', () => {
 it('renders snackbar with View & Text as a child', () => {
   const tree = renderer
     .create(
-      <Snackbar visible onDismiss={jest.fn()}>
+      <Snackbar visible={false} onDismiss={jest.fn()}>
         <View style={styles.snackContent}>
           <View style={styles.iconView} />
           <Text style={styles.text}>
