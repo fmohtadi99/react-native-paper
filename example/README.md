@@ -1,4 +1,4 @@
-# Example App for React Native Paper
+# Example App for React Native Paper v5
 
 ## React Native App
 
