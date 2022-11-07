@@ -35,7 +35,7 @@ jest.mock('react-native', () => {
 it('renders snackbar with content', () => {
   const tree = renderer
     .create(
-      <Snackbar visible={false} onDismiss={jest.fn()}>
+      <Snackbar visible onDismiss={jest.fn()}>
         Snackbar content
       </Snackbar>
     )
@@ -59,7 +59,43 @@ it('renders not visible snackbar with content wrapper but no actual content', ()
 it('renders snackbar with Text as a child', () => {
   const tree = renderer
     .create(
-      <Snackbar visible={false} onDismiss={jest.fn()}>
+      <Snackbar visible onDismiss={jest.fn()}>
+        <Text>Snackbar content</Text>
+      </Snackbar>
+    )
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
+it('renders snackbar with Left align text', () => {
+  const tree = renderer
+    .create(
+      <Snackbar textAlign={'left'} visible onDismiss={jest.fn()}>
+        <Text>Snackbar content</Text>
+      </Snackbar>
+    )
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
+it('renders snackbar with Right Align text', () => {
+  const tree = renderer
+    .create(
+      <Snackbar textAlign={'right'} visible onDismiss={jest.fn()}>
+        <Text>Snackbar content</Text>
+      </Snackbar>
+    )
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
+it('renders snackbar with Center align text', () => {
+  const tree = renderer
+    .create(
+      <Snackbar textAlign={'center'} visible onDismiss={jest.fn()}>
         <Text>Snackbar content</Text>
       </Snackbar>
     )
@@ -72,7 +108,7 @@ it('renders snackbar with action button', () => {
   const tree = renderer
     .create(
       <Snackbar
-        visible={false}
+        visible
         onDismiss={() => {}}
         action={{ label: 'Undo', onPress: jest.fn() }}
       >
@@ -87,7 +123,7 @@ it('renders snackbar with action button', () => {
 it('renders snackbar with View & Text as a child', () => {
   const tree = renderer
     .create(
-      <Snackbar visible={false} onDismiss={jest.fn()}>
+      <Snackbar visible onDismiss={jest.fn()}>
         <View style={styles.snackContent}>
           <View style={styles.iconView} />
           <Text style={styles.text}>
